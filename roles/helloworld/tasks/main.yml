@@ -1,0 +1,13 @@
+---
+
+ - name: helloworld.txt
+   file:
+     path: ~/helloworld.txt
+     state: touch
+
+
+ - name: hello world echo
+   command: echo "hello world"
+   register: result
+
+ - debug: msg="{{ result.stdout }}"

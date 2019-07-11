@@ -1,0 +1,5 @@
+[basic]
+localhost ansible_connection=local
+
+
+[advanced]
