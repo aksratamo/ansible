@@ -1,0 +1,8 @@
+---
+
+ - name: Nextcloud PPA
+   apt_repository: 
+     repo: ppa:nextcloud-devs/client
+     update_cache: yes
+ 
+ 

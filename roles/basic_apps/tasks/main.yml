@@ -1,0 +1,10 @@
+---
+
+ - name: install tree
+   package: 
+     name: "{{ item }}"
+     state: latest
+   with_items:
+    - tree
+    - neofetch
+    - vim
