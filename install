@@ -5,9 +5,9 @@ if [ ! -f /etc/ansible/install ]; then
                 sudo apt update
                 sudo apt install git ansible
                 sudo rm -dr /etc/ansible/
-                cd /etc/
+                cd ~/.ansible/
                 sudo git clone https://github.com/aksratamo/ansible.git
-                echo -e "\e[4m\e[32msudo ansible-playbook site.yml --check\e[0m"
+                ansible-playbook ~/.ansible/ansible/site.yml --check
         fi
 fi
 
