@@ -1,6 +1,6 @@
 ---
-
- - name: install tree
+ - name: install applications
+   become: yes
    package: 
      name: "{{ item }}"
      state: latest
