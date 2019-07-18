@@ -7,6 +7,7 @@ if [ ! -f /etc/ansible/install ]; then
                 sudo rm -dr /etc/ansible/
                 cd /etc/
                 sudo git clone https://github.com/aksratamo/ansible.git
+                echo -e "\e[4m\e[32msudo ansible-playbook site.yml --check\e[0m"
         fi
 fi
 
