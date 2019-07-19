@@ -4,5 +4,5 @@ My aim is to convert my Salt script to Ansible
 
 ``` 
 wget https://raw.githubusercontent.com/aksratamo/ansible/master/install
-sudo bash install
+bash install
 ``` 
