@@ -5,7 +5,7 @@ if [ ! -d ~/.ansible/ansible_aks ]; then
                 sudo apt install git ansible python-apt -y
                 git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
                 echo -e "[basic]\nlocalhost ansible_connection=local" | sudo tee /etc/ansible/hosts > /dev/null
-                ansible-playbook ~/.ansible/ansible_aks/site.yml --check
+                ansible-playbook ~/.ansible/ansible_aks/site.yml
         fi
 fi
 
