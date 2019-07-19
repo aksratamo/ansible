@@ -6,6 +6,7 @@ if [ ! -d ~/.ansible/ansible_aks ]; then
                 git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
                 echo -e "[basic]\nlocalhost ansible_connection=local" | sudo tee /etc/ansible/hosts > /dev/null
                 ansible-playbook ~/.ansible/ansible_aks/site.yml
+                echo "ansible-playbook ~/.ansible/ansible_aks/site.yml"
         fi
 fi
 
