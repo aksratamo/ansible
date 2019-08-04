@@ -1,0 +1,43 @@
+---
+ - name: Nextcloud PPA
+   become: yes
+   apt_repository: 
+     repo: ppa:nextcloud-devs/client
+
+
+ - name: Add VSCodium PPA key
+   become: yes
+   apt_key:
+     url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+     state: present
+
+ - name: VSCodium PPA
+   become: yes
+   apt_repository:
+     repo: deb [arch=amd64] https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main
+     state: present
+
+ - name: KeepassXC PPA
+   become: yes
+   apt_repository:
+     repo: ppa:phoerious/keepassxc
+
+ - name: KeepassXC PPA
+   become: yes
+   apt_repository:
+     repo: ppa:libreoffice/ppa
+
+ - name: Add Signal Desktop PPA GPG key
+   become: yes
+   apt_key:
+     url: https://updates.signal.org/desktop/apt/keys.asc
+     state: present
+
+
+ - name: Signal Deskotp PPA
+   become: yes
+   apt_repository:
+     repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
+     state: present
+
+
