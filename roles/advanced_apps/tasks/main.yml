@@ -3,4 +3,25 @@
    become: yes
    apt_repository: 
      repo: ppa:nextcloud-devs/client
-  #   update_cache: yes
+     #   update_cache: yes
+
+
+ - name: Add VSCodium PPA key
+   become: yes
+   apt_key:
+     url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+     state: present
+
+ - name: VSCodium PPA
+   become: yes
+   apt_repository:
+     repo: deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main
+     state: present
+
+
+
+     # - name: Add VSCodium PPA key
+     #   become: yes
+     #   apt_key:
+     #     url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+     #     state: present
