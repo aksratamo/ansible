@@ -3,5 +3,10 @@
 
   roles:
   - helloworld
-  - advanced_ppa
   - basic_apps
+
+  tasks: 
+  - name: PPA roles
+    include_role:
+      name: advanced_ppa
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

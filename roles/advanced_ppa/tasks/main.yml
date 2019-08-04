@@ -5,7 +5,7 @@
      repo: ppa:nextcloud-devs/client
 
 
- - name: Add VSCodium PPA key
+ - name: Add VSCodium PPA GPG key
    become: yes
    apt_key:
      url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
