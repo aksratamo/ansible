@@ -17,12 +17,8 @@
      repo: deb [arch=amd64] https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main
      state: present
 
- - name: KeepassXC PPA
-   become: yes
-   apt_repository:
-     repo: ppa:phoerious/keepassxc
 
- - name: KeepassXC PPA
+ - name: Libreoffice PPA
    become: yes
    apt_repository:
      repo: ppa:libreoffice/ppa

@@ -1,0 +1,16 @@
+---
+ - name: KeepassXC PPA
+   become: yes
+   apt_repository:
+     repo: ppa:phoerious/keepassxc
+   tags:
+    - install
+    
+ - name: Install KeepassXC 
+   become: yes
+   package: 
+     name: keepassxc
+     state: latest
+   tags:
+    - install
+   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
