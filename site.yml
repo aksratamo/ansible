@@ -4,6 +4,8 @@
   roles:
   - helloworld
   - basic_apps
+  - advanced_apps
+  - firefox
 
   tasks: 
   - name: PPA roles

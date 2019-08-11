@@ -1,0 +1,13 @@
+---
+
+ - name: Install firefox
+   become: yes
+   package: 
+     name: firefox
+     state: latest
+
+ - name: Copy firefox settings
+   become: yes
+   copy:
+     src: syspref.js
+     dest: /etc/firefox/syspref.js
