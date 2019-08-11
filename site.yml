@@ -17,3 +17,5 @@
  - hosts: advanced
    roles:
     - keepassxc
+    - fish
+
