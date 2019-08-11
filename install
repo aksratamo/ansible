@@ -8,7 +8,7 @@ if [ ! -d ~/.ansible/ansible_aks ]; then
                 sudo apt install git ansible python-apt -y
                 git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
                 echo -e "[basic]\nlocalhost ansible_connection=local\n[$MinionID]\nlocalhost ansible_connection=local" | tee ~/.ansible/ansible_aks/hosts > /dev/null
-                ansible-playbook ~/.ansible/ansible_aks/site.yml
+                ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml
                 echo "ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml"
         fi
 fi
