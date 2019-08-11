@@ -1,6 +1,4 @@
-[advanced]
-localhost ansible_connection=local
-
 [basic]
 localhost ansible_connection=local
-
+[basic]
+localhost ansible_connection=local

@@ -1,12 +1,15 @@
 #!/bin/bash
 if [ ! -d ~/.ansible/ansible_aks ]; then 
         if [ "$(lsb_release -is)" == Ubuntu ]; then
-                sudo apt update
+		echo -e "\e[4m\e[32m === Choose installation type ===\e[0m"
+		echo -e "\e[4m\e[32m === Type basic or advanced   === \e[0m"
+		read MinionID
+		sudo apt update
                 sudo apt install git ansible python-apt -y
                 git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
-                echo -e "[basic]\nlocalhost ansible_connection=local" | sudo tee /etc/ansible/hosts > /dev/null
+                echo -e "[basic]\nlocalhost ansible_connection=local\n[$MinionID]\nlocalhost ansible_connection=local" | tee ~/.ansible/ansible_aks/hosts > /dev/null
                 ansible-playbook ~/.ansible/ansible_aks/site.yml
-                echo "ansible-playbook ~/.ansible/ansible_aks/site.yml"
+                echo "ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml"
         fi
 fi
 
