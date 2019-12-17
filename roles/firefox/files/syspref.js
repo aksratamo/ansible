@@ -33,8 +33,6 @@ pref('network.cookie.cookieBehavior', 4);
 pref('privacy.trackingprotection.enabled', true);
 
 
-//hardware acceleration 
-pref('layers.acceleration.force-enabled', true);
 
 
 
