@@ -5,7 +5,7 @@ if [ ! -d ~/.ansible/ansible_aks ]; then
 		echo -e "\e[4m\e[32m === Type basic or advanced   === \e[0m"
 		read MinionID
 		sudo apt update
-                sudo apt install git ansible python-apt -y
+                sudo apt install git ansible python3-apt -y
                 git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
                 echo -e "[basic]\nlocalhost ansible_connection=local\n[$MinionID]\nlocalhost ansible_connection=local" | tee ~/.ansible/ansible_aks/hosts > /dev/null
                 ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml
