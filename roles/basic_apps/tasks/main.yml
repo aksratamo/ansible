@@ -6,6 +6,5 @@
      state: latest
    with_items:
     - tree
-    - neofetch
     - neovim
     - fish
