@@ -4,18 +4,18 @@
    roles:
    - helloworld
    - basic_apps
-   - advanced_apps
    - firefox
  
-   tasks: 
-   - name: PPA roles
-     include_role:
-       name: advanced_ppa
-     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 
  - hosts: advanced
    roles:
     - keepassxc
     - fish
+    
 
+   tasks: 
+   - name: PPA roles
+     include_role:
+       name: advanced_ppa
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
