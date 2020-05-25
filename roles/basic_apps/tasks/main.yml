@@ -6,5 +6,4 @@
      state: latest
    with_items:
     - tree
-    - neovim
     - fish
