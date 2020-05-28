@@ -3,6 +3,11 @@
    shell: echo "helloworld" >> /tmp/helloworld.txt
    args:
     creates: /tmp/helloworld.txt
-
-
-
+   register: result
+   tags:
+   - helloworld
+ 
+ - debug:
+     msg: "show {{ ansible_distribution }}"
+   tags:
+   - helloworld

@@ -3,7 +3,7 @@
  - name: Add Fish PPA 
    become: yes
    apt_repository:
-     repo: ppa:fish-shell/release-3
+     repo: ppa:fish-shell/release-3  
    tags:
     - install
     - fish
@@ -14,6 +14,4 @@
      name: fish
      state: latest
    tags:
-    - install
-    - fish
-   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+   - fish

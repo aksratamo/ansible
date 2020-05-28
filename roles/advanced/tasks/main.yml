@@ -37,3 +37,15 @@
      state: present
 
 
+ - name: Install the packages
+   become: yes
+   apt:
+     pkg:
+     - signal-desktop
+     - libreoffice
+     - codium
+     - keepassxc
+     - fish
+     update_cache: yes
+   tags: 
+    - install

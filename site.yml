@@ -1,8 +1,7 @@
 ---
  - hosts: basic
 
-   roles:
-   - helloworld
+   roles:  
    - basic_apps
    - firefox
  
@@ -18,4 +17,4 @@
    - name: PPA roles
      include_role:
        name: advanced_ppa
-     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    

@@ -5,6 +5,7 @@
      repo: ppa:phoerious/keepassxc
    tags:
     - install
+    - keepassxc
     
  - name: Install KeepassXC 
    become: yes
@@ -12,5 +13,5 @@
      name: keepassxc
      state: latest
    tags:
-    - install keepassxc
-   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - install
+    - keepassxc

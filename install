@@ -1,16 +1,60 @@
 #!/bin/bash
-if [ ! -d ~/.ansible/ansible_aks ]; then 
-        if [ "$(lsb_release -is)" == Ubuntu ]; then
-		echo -e "\e[4m\e[32m === Choose installation type ===\e[0m"
-		echo -e "\e[4m\e[32m === Type basic or advanced   === \e[0m"
-		read MinionID
-		sudo apt update
-                sudo apt install git ansible python3-apt -y
-                git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
-                echo -e "[basic]\nlocalhost ansible_connection=local\n[$MinionID]\nlocalhost ansible_connection=local" | tee ~/.ansible/ansible_aks/hosts > /dev/null
-                ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml
-                echo "ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml"
-        fi
+# if [ ! -d ~/.ansible/ansible_aks ]; then 
+#         if [ "$(lsb_release -is)" == Ubuntu ]; then
+# 		echo -e "\e[4m\e[32m === Choose installation type ===\e[0m"
+# 		echo -e "\e[4m\e[32m === Type basic or advanced   === \e[0m"
+# 		read MinionID
+# 		sudo apt update
+#                 sudo apt install git ansible python3-apt -y
+#                 git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
+#                 echo -e "[basic]\nlocalhost ansible_connection=local\n[$MinionID]\nlocalhost ansible_connection=local" | tee ~/.ansible/ansible_aks/hosts > /dev/null
+#                 ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml
+#                 echo "ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml"
+#         fi
+# fi
+
+
+
+
+if [ -f /usr/bin/apt ]; then #Check if apt based linux system. (not working with others.)
+    echo "Apt is installed, proceeding" 
+else 
+    echo "Apt is not installed. Are you sure you are using Ubuntu/Debian based OS? EXIT"
+    exit
+fi
+
+if [ ! -d ~/.ansible/ansible_aks ]; then #checks if folder ansible_aks is not yet downloaded    
+    echo "Requirements met, proceeding"
+else 
+    echo "Folder ~/.ansible/ansible_aks already exist Have you run this script already? EXIT" 
+    exit
 fi
 
 
+
+
+echo -e "\e[4m\e[32m === Choose installation type ===\e[0m"
+select MinionID in "basic" "advanced"; do
+    case $MinionID in
+        basic ) break ;;
+        advanced ) break ;;
+        * ) echo "invalid selection try again";; 
+    esac
+done
+
+
+echo -e "\e[4m\e[32m === Do you want to install programs. (or just add ppa) ===\e[0m"
+select tags in "install" "do_not_install"; do
+    case $tags in
+        install ) tag=nothing;  break;;
+        do_not_install ) tag=install; break;;
+        * ) echo "invalid selection try again";; 
+    esac
+done
+echo -e " Selected \e[4m\e[33m == $MinionID  == $tags ==\e[0m"
+
+sudo apt install git ansible python3-apt -y
+git clone https://github.com/aksratamo/ansible.git ~/.ansible/ansible_aks
+echo -e "[basic]\nlocalhost ansible_connection=local\n[$MinionID]\nlocalhost ansible_connection=local" | tee ~/.ansible/ansible_aks/hosts > /dev/null
+ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml --skip-tags "$tag"
+echo "ansible-playbook -i ~/.ansible/ansible_aks/hosts ~/.ansible/ansible_aks/site.yml"
